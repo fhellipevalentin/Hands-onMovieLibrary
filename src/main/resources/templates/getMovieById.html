@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>getMovieById</title>
+</head>
+<body>
+	<table border="1">
+		<thead>Movie Details</thead>
+		<tr>
+			<td>Movie ID</td>
+			<td>Movie Name</td>
+			<td>Movie Collection</td>
+		</tr>
+		<tr>
+            <td th:text="${movie.movieId}"></td>
+            <td th:text="${movie.movieName}"></td>
+            <td th:text="${movie.movieCollection}"></td>
+        </tr>
+	</table>
+	
+</body>
+</html>

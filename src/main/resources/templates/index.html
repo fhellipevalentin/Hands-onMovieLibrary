@@ -22,11 +22,11 @@
     <a href="#" id="getEmployeeByName">Get Movie By Name</a>
 
     <div id="searchById" style="display:none;">
-		 <form action="#" th:action="@{/movie/id/{movieId}(movieId=${movieId})}" method="get">
-		     <label for="id">Enter the Movie ID:</label>
-		     <input type="text" id="id" name="movieId">
-		     <input type="submit" value="Search">
-		 </form>
+	    <form action="#" th:action="@{/movie/id/}" method="get">
+	        <label for="id">Enter the Movie ID:</label>
+	        <input type="text" id="id" name="movieId">
+	        <input type="submit" value="Search">
+	    </form>
 	</div>
 
 
