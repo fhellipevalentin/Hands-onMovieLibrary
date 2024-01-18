@@ -22,13 +22,12 @@
     <a href="#" id="getEmployeeByName">Get Movie By Name</a>
 
     <div id="searchById" style="display:none;">
-	    <form action="#" th:action="@{/movie/id/}" method="get">
-	        <label for="id">Enter the Movie ID:</label>
-	        <input type="text" id="id" name="movieId">
-	        <input type="submit" value="Search">
-	    </form>
-	</div>
-
+        <form id="movieForm" action="#" method="get">
+            <label for="id">Enter the Movie ID:</label>
+            <input type="text" id="id" name="movieId">
+            <input type="submit" value="Search">
+        </form>
+    </div>
 
     <div id="searchByName" style="display:none;">
         <form action="#" th:action="@{/employee/searchByName}" method="get">
@@ -37,5 +36,13 @@
             <input type="submit" value="Search">
         </form>
     </div>
+
+    <script>
+        document.getElementById('movieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let movieId = document.getElementById('id').value;
+            window.location.href = '/movie/id/' + movieId;
+        });
+    </script>
 </body>
 </html>
