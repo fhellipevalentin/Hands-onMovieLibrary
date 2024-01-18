@@ -19,6 +19,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests()
                 .requestMatchers("/", "/home").permitAll()
+                .requestMatchers("/", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin(login -> login
@@ -26,6 +27,7 @@ public class SecurityConfig {
                         .successHandler(loginSuccessHandler())
                         .permitAll())
                 .logout(logout -> logout.permitAll());
+        http.headers(headers -> headers.frameOptions().disable());
         return http.build();
 	}
 	

@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Secure Page</title>
-    <h1>Welcome to the Secure Page!</h1>
+    <title>Movie Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#getEmployeeById").click(function(){
+                $("#searchById").show();
+                $("#searchByName").hide();
+            });
+            $("#getEmployeeByName").click(function(){
+                $("#searchById").hide();
+                $("#searchByName").show();
+            });
+        });
+    </script>
 </head>
 <body>
+	<h1>Search</h1>
+    <a href="#" id="getEmployeeById">Get Movie By ID</a>
+    <a href="#" id="getEmployeeByName">Get Movie By Name</a>
+
+    <div id="searchById" style="display:none;">
+		 <form action="#" th:action="@{/movie/id/{movieId}(movieId=${movieId})}" method="get">
+		     <label for="id">Enter the Movie ID:</label>
+		     <input type="text" id="id" name="movieId">
+		     <input type="submit" value="Search">
+		 </form>
+	</div>
+
+
+    <div id="searchByName" style="display:none;">
+        <form action="#" th:action="@{/employee/searchByName}" method="get">
+            <label for="name">Enter the Employee Name:</label>
+            <input type="text" id="name" name="name">
+            <input type="submit" value="Search">
+        </form>
+    </div>
 </body>
 </html>
