@@ -1,41 +1,45 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
+import com.example.demo.service.MovieService;
 
 @Controller
-@RequestMapping("/movie")
 public class MovieController {
-	
+
+	@Autowired
+	private MovieService movieService;
+
 	@Autowired
 	private MovieRepository movieRepository;
-	
-	@GetMapping("/id/{movieId}")
-	public String getMovieById (@PathVariable String movieId, Model model) {
+
+	@GetMapping("/movies/id/{movieId}")
+	public String getMovieById(@PathVariable String movieId, Model model) {
 		Movie movie = movieRepository.findByMovieId(movieId);
 		model.addAttribute("movie", movie);
 		return "getMovieById";
 	}
-	
-	@GetMapping("/name/{movieName}")
-	public String getMovieByName (@PathVariable String movieName, Model model) {
-		Movie movie = movieRepository.findByMovieName(movieName);
-		model.addAttribute("movie", movie);
+
+	@GetMapping("/movies/search")
+	public String searchMovies(@RequestParam String name, Model model) {
+		List<Movie> movies = movieService.findMoviesByName(name);
+		model.addAttribute("movies", movies);
 		return "getMovieByName";
 	}
-	
-	@GetMapping("/collection/{movieCollection}")
-	public String getMovieByCollection (@PathVariable String movieCollection, Model model) {
-		Movie movie = movieRepository.findByMovieCollection(movieCollection);
-		model.addAttribute("movie", movie);
+	@GetMapping("/movies/collection")
+	public String searchCollection(@RequestParam String collection, Model model) {
+		List<Movie> movies = movieService.findMoviesByCollection(collection);
+		model.addAttribute("movies", movies);
 		return "getMovieByCollection";
 	}
-	
+
 }

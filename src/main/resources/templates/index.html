@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Movie Search</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#getEmployeeById").click(function(){
-                $("#searchById").show();
-                $("#searchByName").hide();
-            });
-            $("#getEmployeeByName").click(function(){
-                $("#searchById").hide();
-                $("#searchByName").show();
-            });
-        });
-    </script>
+	<title>Movie Search</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#getMovieById").click(function () {
+				$("#searchById").show();
+				$("#searchByCollection").hide();
+				$("#searchByName").hide();
+			});
+			$("#getMovieByName").click(function () {
+				$("#searchById").hide();
+				$("#searchByCollection").hide();
+				$("#searchByName").show();
+			});
+			$("#getMovieByCollection").click(function () {
+				$("#searchById").hide();
+				$("#searchByName").hide();
+				$("#searchByCollection").show();
+			});
+		});
+	</script>
 </head>
+
 <body>
 	<h1>Search</h1>
-    <a href="#" id="getEmployeeById">Get Movie By ID</a>
-    <a href="#" id="getEmployeeByName">Get Movie By Name</a>
+	<a href="#" id="getMovieById">Get Movie By ID</a>
+	<a href="#" id="getMovieByName">Get Movie By Name</a>
+	<a href="#" id="getMovieByCollection">Get Movie By Collection</a>
 
-    <div id="searchById" style="display:none;">
-        <form id="movieForm" action="#" method="get">
-            <label for="id">Enter the Movie ID:</label>
-            <input type="text" id="id" name="movieId">
-            <input type="submit" value="Search">
-        </form>
-    </div>
+	<div id="searchById" style="display:none;">
+		<form id="movieForm" action="#" method="get">
+			<label for="id">Enter the Movie ID:</label>
+			<input type="text" id="id" name="movieId">
+			<input type="submit" value="Search">
+		</form>
+	</div>
 
-    <div id="searchByName" style="display:none;">
-        <form action="#" th:action="@{/employee/searchByName}" method="get">
-            <label for="name">Enter the Employee Name:</label>
-            <input type="text" id="name" name="name">
-            <input type="submit" value="Search">
-        </form>
-    </div>
+	<div id="searchByName" style="display:none;">
+		<form action="#" th:action="@{/movies/search}" method="get">
+			<input type="text" name="name" placeholder="Enter movie name" required>
+			<button type="submit">Enter the Movie Name</button>
+		</form>
+	</div>
+	
+	<div id="searchByCollection" style="display:none;">
+		<form action="#" th:action="@{/movies/collection}" method="get">
+			<input type="text" name="collection" placeholder="Enter movie collection" required>
+			<button type="submit">Enter the Movie Collection</button>
+		</form>
+	</div>
 
-    <script>
-        document.getElementById('movieForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let movieId = document.getElementById('id').value;
-            window.location.href = '/movie/id/' + movieId;
-        });
-    </script>
+
+	<script>
+		document.getElementById('movieForm').addEventListener('submit', function (e) {
+			e.preventDefault();
+			let movieId = document.getElementById('id').value;
+			window.location.href = '/movies/id/' + movieId;
+		});
+		document.getElementById('movieName').addEventListener('submit', function (e) {
+			e.preventDefault();
+			let movieName = document.getElementById('id').value;
+			window.location.href = '/movies/name/' + movieName;
+		});
+		document.getElementById('movieCollection').addEventListener('submit', function (e) {
+			e.preventDefault();
+			let movieColletion = document.getElementById('id').value;
+			window.location.href = '/movies/collection/' + movieColletion;
+		});
+	</script>
 </body>
+
 </html>

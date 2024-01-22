@@ -13,8 +13,8 @@ public class Movie {
 	private Long id;
 	
 	private String movieId;
-	private String movieName;
-	private String movieCollection;
+	private String name;
+	private String collection;
 	public Long getId() {
 		return id;
 	}
@@ -27,18 +27,21 @@ public class Movie {
 	public void setMovieId(String movieId) {
 		this.movieId = movieId;
 	}
-	public String getMovieName() {
-		return movieName;
+	
+	
+	public String getName() {
+		return name;
 	}
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getMovieCollection() {
-		return movieCollection;
+	public String getCollection() {
+		return collection;
 	}
-	public void setMovieCollection(String movieCollection) {
-		this.movieCollection = movieCollection;
+	public void setCollection(String collection) {
+		this.collection = collection;
 	}
+	
 	
 	
 }
