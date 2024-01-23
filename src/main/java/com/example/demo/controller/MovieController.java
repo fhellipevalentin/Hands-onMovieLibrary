@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Movie;
-import com.example.demo.repository.MovieRepository;
 import com.example.demo.service.MovieService;
 
 @Controller
@@ -19,12 +18,9 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 
-	@Autowired
-	private MovieRepository movieRepository;
-
 	@GetMapping("/movies/id/{movieId}")
 	public String getMovieById(@PathVariable String movieId, Model model) {
-		Movie movie = movieRepository.findByMovieId(movieId);
+		Movie movie = movieService.findMoviesById(movieId);
 		model.addAttribute("movie", movie);
 		return "getMovieById";
 	}

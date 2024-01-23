@@ -55,7 +55,7 @@ public class DataInitializer implements CommandLineRunner{
 			newMovie9.setName("The Mummy Returns");
 			newMovie9.setCollection("9000000");
 			Movie newMovie10 = new Movie();
-			newMovie10.setMovieId("M0010");
+			newMovie10.setMovieId("M010");
 			newMovie10.setName("Star Wars");
 			newMovie10.setCollection("7000000");
 			movieRepository.saveAll(Arrays.asList(newMovie, newMovie2, newMovie3, newMovie4,
