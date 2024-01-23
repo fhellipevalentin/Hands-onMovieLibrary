@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.controller.MovieNotFoundException;
 import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 
@@ -18,15 +18,23 @@ public class MovieService {
 	}
 
 	public List<Movie> findMoviesByName(String name) {
-		return movieRepository.findByNameContaining(name);
+		List<Movie> movies = movieRepository.findByNameContaining(name);
+		if (movies.isEmpty()) {
+		    throw new MovieNotFoundException("Sorry no matchers found for the search criteria");
+		}
+		return movies;
 	}
 	
 	public Movie findMoviesById(String movieId) {
         return movieRepository.findByMovieId(movieId)
-            .orElseThrow(() -> new NoSuchElementException("No movie found with id: " + movieId));
+            .orElseThrow(() -> new MovieNotFoundException("Sorry no matchers found for the search criteria"));
 	}
 
 	public List<Movie> findMoviesByCollection(String collection) {
-		return movieRepository.findByCollectionContaining(collection);
+		List<Movie> collections = movieRepository.findByCollectionContaining(collection);
+		if (collections.isEmpty()) {
+			throw new MovieNotFoundException("Sorry no matchers found for the search criteria");
+		}
+		return collections;
 	}
 }
