@@ -18,7 +18,10 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/home").permitAll()
+                .requestMatchers("/", "/index",
+                		"/movies/id/{movieId}",
+                		"/movies/search", 
+                		"/movies/collection").permitAll()
                 .requestMatchers("/", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -50,7 +53,7 @@ public class SecurityConfig {
 
     @Bean
     AuthenticationSuccessHandler loginSuccessHandler() {
-        return (request, response, authentication) -> response.sendRedirect("/index");
+        return (request, response, authentication) -> response.sendRedirect("/movies/newMovie");
     }
     
     @Bean

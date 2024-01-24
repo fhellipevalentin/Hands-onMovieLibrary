@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.controller.MovieNotFoundException;
+import com.example.demo.controller.exception.MovieNotFoundException;
 import com.example.demo.model.Movie;
 import com.example.demo.repository.MovieRepository;
 

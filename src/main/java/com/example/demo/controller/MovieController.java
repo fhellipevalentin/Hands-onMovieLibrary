@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.controller.exception.MovieNotFoundException;
 import com.example.demo.model.Movie;
 import com.example.demo.service.MovieService;
 
@@ -43,5 +44,10 @@ public class MovieController {
 	public String handleException(MovieNotFoundException ex, Model model) {
 	    model.addAttribute("message", ex.getMessage());
 	    return "error";
+	}
+	
+	@GetMapping("/movies/newMovie")
+	public String newMovie() {
+		return "newMovie";
 	}
 }
