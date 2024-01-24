@@ -53,7 +53,7 @@ public class SecurityConfig {
 
     @Bean
     AuthenticationSuccessHandler loginSuccessHandler() {
-        return (request, response, authentication) -> response.sendRedirect("/movies/newMovie");
+        return (request, response, authentication) -> response.sendRedirect("/movies/admin");
     }
     
     @Bean

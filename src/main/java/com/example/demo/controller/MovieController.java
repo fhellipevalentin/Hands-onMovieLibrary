@@ -46,8 +46,18 @@ public class MovieController {
 	    return "error";
 	}
 	
+	@GetMapping("/movies/admin")
+	public String admin() {
+		return "admin";
+	}
+	
 	@GetMapping("/movies/newMovie")
 	public String newMovie() {
 		return "newMovie";
+	}
+	
+	@GetMapping("/movies/advice")
+	public String advice() {
+		return "advice";
 	}
 }

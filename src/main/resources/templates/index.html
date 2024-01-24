@@ -36,22 +36,24 @@
 	<div id="searchById" style="display:none;">
 		<form id="movieForm" action="#" method="get">
 			<label for="id">Enter the Movie ID:</label>
-			<input type="text" id="id" name="movieId">
+			<input type="text" placeholder="Enter movie ID" id="id" name="movieId" required>
 			<input type="submit" value="Search">
 		</form>
 	</div>
 
 	<div id="searchByName" style="display:none;">
 		<form action="#" th:action="@{/movies/search}" method="get">
+			<label for="id">Enter the Movie Name:</label>
 			<input type="text" name="name" placeholder="Enter movie name" required>
-			<button type="submit">Enter the Movie Name</button>
+			<input type="submit" value="Search">
 		</form>
 	</div>
 
 	<div id="searchByCollection" style="display:none;">
 		<form action="#" th:action="@{/movies/collection}" method="get">
-			<input type="text" name="collection" placeholder="Enter movie collection" required>
-			<button type="submit">Enter the Movie Collection</button>
+			<label for="id">Enter the Movie Collection:</label>
+			<input type="text" name="collection" placeholder="Enter movie collection" required >
+			<input type="submit" value="Search">
 		</form>
 	</div>
 

@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Admin page</title>
+	<meta charset="UTF-8">
+	<title>Add Movie</title>
 </head>
+
 <body>
-	<h2>Admin page</h2>
+	<h2>Enter new Movie Details</h2>
+	<form action="#" th:action="@{/movies/add}" method="post">
+		<label for="id">Enter the Movie ID:</label>
+		<input type="text" name="id" placeholder="Enter movie ID" required>
+		<label for="id">Enter the Movie Name:</label>
+		<input type="text" name="name" placeholder="Enter movie name" required>
+		<label for="id">Enter the Movie Collection:</label>
+		<input type="text" name="collection" placeholder="Enter movie collection" required>
+		<button type="submit">ADD</button>
+	</form>
 </body>
+
 </html>
