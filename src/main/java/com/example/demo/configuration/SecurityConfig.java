@@ -47,7 +47,13 @@ public class SecurityConfig {
                 .password(passwordEncoder().encode("12345"))
                 .authorities("read")
                 .build();
-        return new InMemoryUserDetailsManager(admin, user);
+        UserDetails secretaria = User.withUsername("secretaria")
+                .username("secretaria")
+                .roles("SECRETARIA")
+                .password(passwordEncoder().encode("12345"))
+                .authorities("read", "write")
+                .build();
+        return new InMemoryUserDetailsManager(admin, user, secretaria);
 
 	}
 

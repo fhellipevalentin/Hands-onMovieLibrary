@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.exception.MovieNotFoundException;
@@ -40,6 +41,12 @@ public class MovieController {
 		return "getMovieByCollection";
 	}
 	
+	@PostMapping("/movies/movieAdded")
+    public String addMovie(Movie movie) {
+        movieService.addMovie(movie);
+        return "movieAdded";
+    }
+	
 	@ExceptionHandler(MovieNotFoundException.class)
 	public String handleException(MovieNotFoundException ex, Model model) {
 	    model.addAttribute("message", ex.getMessage());
@@ -59,5 +66,10 @@ public class MovieController {
 	@GetMapping("/movies/advice")
 	public String advice() {
 		return "advice";
+	}
+	
+	@GetMapping("/movies/movieAdded")
+	public String movieAdded() {
+	    return "movieAdded";
 	}
 }

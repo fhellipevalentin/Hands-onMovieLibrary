@@ -37,4 +37,8 @@ public class MovieService {
 		}
 		return collections;
 	}
+	
+	public Movie addMovie(Movie movie) {
+		return movieRepository.save(movie);
+	}
 }
